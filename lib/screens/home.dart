@@ -83,6 +83,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          setState(() {
+            _currentTab = index;
+          });
+        },
         items: [
           BottomNavigationBarItem(
             icon: Icon(
