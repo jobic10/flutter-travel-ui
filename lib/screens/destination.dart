@@ -126,6 +126,10 @@ class _DestinationScreenState extends State<DestinationScreen> {
           ),
           Expanded(
             child: ListView.builder(
+              padding: EdgeInsets.only(
+                top: 10,
+                bottom: 15,
+              ),
               itemBuilder: (context, index) {
                 var activity = widget.destination.activities[index];
                 return Stack(
@@ -224,6 +228,19 @@ class _DestinationScreenState extends State<DestinationScreen> {
                         ),
                       ),
                     ),
+                    Positioned(
+                      left: 10,
+                      top: 15,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                          activity.imageUrl,
+                          fit: BoxFit.cover,
+                          width: 110,
+                          height: 150,
+                        ),
+                      ),
+                    )
                   ],
                 );
               },
