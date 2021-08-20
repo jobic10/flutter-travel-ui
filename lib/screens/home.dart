@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     FontAwesomeIcons.biking,
   ];
   int _selectedIndex = 0;
-
+  int _currentTab = 0;
   Widget _buildIcon(int index) {
     return GestureDetector(
       onTap: () {
@@ -81,6 +81,32 @@ class _HomeScreenState extends State<HomeScreen> {
             HotelCarousel(),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.search,
+              size: 30,
+            ),
+            title: SizedBox.shrink(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.local_pizza,
+              size: 30,
+            ),
+            title: SizedBox.shrink(),
+          ),
+          BottomNavigationBarItem(
+            icon: CircleAvatar(
+              radius: 15,
+              backgroundImage: AssetImage('assets/images/murano.jpg'),
+            ),
+            title: SizedBox.shrink(),
+          ),
+        ],
+        currentIndex: _currentTab,
       ),
     );
   }
