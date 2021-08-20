@@ -18,26 +18,26 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   Widget _buildIcon(int index) {
-    return Container(
-      height: 60,
-      width: 60,
-      decoration: BoxDecoration(
-        color: Theme.of(context).accentColor,
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: GestureDetector(
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+      child: Container(
+        height: 60,
+        width: 60,
+        decoration: BoxDecoration(
+          color: Theme.of(context).accentColor,
+          borderRadius: BorderRadius.circular(30),
+        ),
         child: Icon(
           _icons[index],
           size: 25,
           color: _selectedIndex == index
               ? Theme.of(context).primaryColor
-              : Colors.grey,
+              : Color(0XFFB4C1C4),
         ),
-        onTap: () {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
       ),
     );
   }
