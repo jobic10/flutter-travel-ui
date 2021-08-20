@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_ui/models/destination.dart';
+import 'package:travel_ui/models/hotel.dart';
 
 class HotelCarousel extends StatelessWidget {
   const HotelCarousel({Key? key}) : super(key: key);
@@ -39,10 +40,10 @@ class HotelCarousel extends StatelessWidget {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              var destination = destinations[index];
+              var hotel = hotels[index];
               return Container(
                 margin: EdgeInsets.all(10),
-                width: 210,
+                width: 240,
                 decoration: BoxDecoration(),
                 child: Stack(
                   alignment: Alignment.topCenter,
@@ -60,20 +61,32 @@ class HotelCarousel extends StatelessWidget {
                           padding: const EdgeInsets.all(10.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${destination.activities.length} activities',
+                                '${hotel.name}',
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.w600,
                                   letterSpacing: 1.2,
                                 ),
                               ),
+                              SizedBox(
+                                height: 2,
+                              ),
                               Text(
-                                destination.description,
+                                hotel.address,
                                 style: TextStyle(
                                   color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 2,
+                              ),
+                              Text(
+                                '\$${hotel.price} / night',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18,
                                 ),
                               ),
                             ],
@@ -93,60 +106,21 @@ class HotelCarousel extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: Stack(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset(
-                              destination.imageUrl,
-                              fit: BoxFit.cover,
-                              height: 180,
-                              width: 180,
-                            ),
-                          ),
-                          Positioned(
-                            left: 10,
-                            bottom: 10,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  destination.city,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w600,
-                                      letterSpacing: 1.2),
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      FontAwesomeIcons.locationArrow,
-                                      size: 10,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      destination.country,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                          hotel.imageUrl,
+                          fit: BoxFit.cover,
+                          height: 180,
+                          width: 220,
+                        ),
                       ),
                     )
                   ],
                 ),
               );
             },
-            itemCount: destinations.length,
+            itemCount: hotels.length,
           ),
         )
       ],
